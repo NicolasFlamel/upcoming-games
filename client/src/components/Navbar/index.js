@@ -13,15 +13,15 @@ const Navigation = () => {
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#login">Login</Nav.Link>
         </Nav>
-          <Form className="d-flex just">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2 game-search-bar"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+        <Form className="d-flex just">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2 game-search-bar"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
       </Container>
     </Navbar>
   );
