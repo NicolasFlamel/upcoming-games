@@ -6,8 +6,14 @@ const typeDefs = gql`
     username: String!
   }
 
+  type Game {
+    id: Int
+    name: String
+  }
+
   type Query {
     me: User
+    api: Game
   }
   type Mutation {
     temp: User
