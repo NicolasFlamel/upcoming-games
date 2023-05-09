@@ -10,8 +10,8 @@ const Navigation = () => {
       <Container>
         <Navbar.Brand href="#home">Upcoming Games</Navbar.Brand>
         <Nav>
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#login">Login</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/login">Login</Nav.Link>
         </Nav>
         <Form className="d-flex just">
           <Form.Control
