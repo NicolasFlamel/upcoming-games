@@ -1,16 +1,16 @@
 const express = require('express');
 const path = require('path');
-const db = require('./config/connection');;
+const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
-const { typeDefs, resolvers } = require('./schema')
+const { typeDefs, resolvers } = require('./schema');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
-})
+  resolvers,
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,9 +28,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    })
-  })
+      console.log(
+        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
+      );
+    });
+  });
 };
 
 startApolloServer(typeDefs, resolvers);

@@ -1,0 +1,8 @@
+/* Navbar */
+.navbar form {
+  justify-content: end;
+}
+
+.game-search-bar {
+  max-width: 200px;
+}
