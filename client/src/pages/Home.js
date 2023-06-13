@@ -7,7 +7,7 @@ const Home = () => {
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>ERROR</h1>;
 
-  console.log(data);
+  console.log('data', data);
 
   return (
     <section>
