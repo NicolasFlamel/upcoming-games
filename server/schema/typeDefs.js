@@ -7,8 +7,23 @@ const typeDefs = gql`
   }
 
   type Game {
+    gameData: [GameData]
+    coverData: [CoverData]
+  }
+
+  type GameData {
     id: Int
     name: String
+    cover: Int
+    platforms: [Int]
+    release_dates: [Int]
+    summary: String
+  }
+
+  type CoverData {
+    id: Int
+    game: Int
+    url: String
   }
 
   type Query {
