@@ -3,8 +3,19 @@ import { gql } from '@apollo/client';
 export const QUERY_API = gql`
   query getAPI {
     api {
-      id
-      name
+      gameData {
+        id
+        name
+        cover
+        platforms
+        release_dates
+        summary
+      }
+      coverData {
+        id
+        game
+        url
+      }
     }
   }
 `;
