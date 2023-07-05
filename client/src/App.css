@@ -6,3 +6,16 @@
 .game-search-bar {
   max-width: 200px;
 }
+
+/* Home page */
+
+.upcoming-month ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+.card-body {
+  overflow: auto;
+}
