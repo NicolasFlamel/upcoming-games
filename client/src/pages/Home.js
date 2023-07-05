@@ -30,7 +30,12 @@ const Home = () => {
           <ul>
             {gameList.map((game) => (
               <li key={game.id}>
-                <Card style={{ width: '18rem', height: '36rem', maxHeight: '36rem' }}>
+                <Card
+                  style={{
+                    width: '18rem',
+                    height: '36rem',
+                  }}
+                >
                   <Card.Img
                     variant="top"
                     src={
