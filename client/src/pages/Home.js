@@ -4,6 +4,9 @@ import Card from 'react-bootstrap/Card';
 
 const Home = () => {
   const { loading, data, error } = useQuery(QUERY_API);
+  const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
+    new Date()
+  );
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>ERROR {console.log(error)}</h1>;
@@ -18,23 +21,26 @@ const Home = () => {
     return newGame;
   });
 
-  console.log('gamelist', gameList);
-
   return (
     <section>
       <h1>Welcome!</h1>
       <section>
-        <h2>Upcoming Games</h2>
         <article className="upcoming-month">
-          <h3>May</h3>
+          <h2>{month}</h2>
           <ul>
             {gameList.map((game) => (
               <li key={game.id}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={game.cover?.url} />
+                <Card style={{ width: '18rem', height: '36rem', maxHeight: '36rem' }}>
+                  <Card.Img
+                    variant="top"
+                    src={
+                      game.cover?.url ||
+                      'https://placehold.co/400?text=No+Image+Found'
+                    }
+                  />
                   <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
-                    <Card.Text>{game.summary}</Card.Text>
+                    <Card.Text>{game.summary || 'No Summary Found'}</Card.Text>
                   </Card.Body>
                 </Card>
               </li>
