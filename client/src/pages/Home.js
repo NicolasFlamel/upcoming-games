@@ -25,20 +25,22 @@ const Home = () => {
       <h1>Welcome!</h1>
       <section>
         <h2>Upcoming Games</h2>
-        <h3>May</h3>
-        <ul>
-          {gameList.map((game) => (
-            <li key={game.id}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={game.cover?.url} />
-                <Card.Body>
-                  <Card.Title>{game.name}</Card.Title>
-                  <Card.Text>{game.summary}</Card.Text>
-                </Card.Body>
-              </Card>
-            </li>
-          ))}
-        </ul>
+        <article className="upcoming-month">
+          <h3>May</h3>
+          <ul>
+            {gameList.map((game) => (
+              <li key={game.id}>
+                <Card style={{ width: '18rem' }}>
+                  <Card.Img variant="top" src={game.cover?.url} />
+                  <Card.Body>
+                    <Card.Title>{game.name}</Card.Title>
+                    <Card.Text>{game.summary}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </article>
       </section>
     </section>
   );
