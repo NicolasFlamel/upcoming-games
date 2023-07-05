@@ -37,13 +37,14 @@ const resolvers = {
             ') & category = (0,8,9,11,12);',
         });
         const gameData = await gamesResponse.json();
-        
-        const gameDataIds = gameData.map(game => game.id)
-        
+
+        const gameDataIds = gameData.map((game) => game.id);
+
         const coverResponse = await fetch(coverURL, {
           method: 'POST',
           headers,
-          body: 'fields url,game; where game = (' + gameDataIds.toString() + ');',
+          body:
+            'fields url,game; where game = (' + gameDataIds.toString() + ');',
         });
         const coverData = await coverResponse.json();
 
