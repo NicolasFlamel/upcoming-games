@@ -15,3 +15,7 @@
   justify-content: space-evenly;
   list-style-type: none;
 }
+
+.card-body{ 
+  overflow: auto;
+}
