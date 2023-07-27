@@ -1,9 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { QUERY_API } from '../utils/queries';
+import { QUERY_UPCOMING } from '../utils/queries';
 import Card from 'react-bootstrap/Card';
 
 const Home = () => {
-  const { loading, data, error } = useQuery(QUERY_API);
+  const { loading, data, error } = useQuery(QUERY_UPCOMING);
+
   const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
     new Date()
   );
@@ -11,15 +12,9 @@ const Home = () => {
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>ERROR {console.log(error)}</h1>;
 
-  const { gameData, coverData } = data.api;
+  const { upcoming } = data;
 
-  const gameList = gameData.map((game) => {
-    const newGame = { ...game };
-
-    newGame.cover = coverData.find((coverObj) => coverObj.game === game.id);
-
-    return newGame;
-  });
+  console.log(upcoming);
 
   return (
     <section>
@@ -28,7 +23,7 @@ const Home = () => {
         <article className="upcoming-month">
           <h2>{month}</h2>
           <ul>
-            {gameList.map((game) => (
+            {upcoming.map((game) => (
               <li key={game.id}>
                 <Card
                   style={{
@@ -39,13 +34,15 @@ const Home = () => {
                   <Card.Img
                     variant="top"
                     src={
-                      game.cover?.url ||
+                      game.game?.cover?.url ||
                       'https://placehold.co/400?text=No+Image+Found'
                     }
                   />
                   <Card.Body>
-                    <Card.Title>{game.name}</Card.Title>
-                    <Card.Text>{game.summary || 'No Summary Found'}</Card.Text>
+                    <Card.Title>{game.game?.name}</Card.Title>
+                    <Card.Text>
+                      {game.game?.summary || 'No Summary Found'}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </li>
