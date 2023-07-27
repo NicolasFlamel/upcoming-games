@@ -31,12 +31,14 @@ const resolvers = {
       }
 
       // filter out duplicate games
-      const upcomingFilteredGames = upcomingData.filter((upcomingGame, index) => {
-        const findGame = upcomingData.find(
-          (game) => game.game == upcomingGame.game
-        );
-        return findGame === upcomingGame;
-      });
+      const upcomingFilteredGames = upcomingData.filter(
+        (upcomingGame, index) => {
+          const findGame = upcomingData.find(
+            (game) => game.game == upcomingGame.game
+          );
+          return findGame === upcomingGame;
+        }
+      );
 
       //  array of game ids for filtered games
       const filteredGameIds = upcomingFilteredGames.map(({ game }) => game);

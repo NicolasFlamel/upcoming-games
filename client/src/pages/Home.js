@@ -38,12 +38,15 @@ const Home = () => {
                       'https://placehold.co/400?text=No+Image+Found'
                     }
                   />
+                  <Card.Title>{game.game?.name}</Card.Title>
                   <Card.Body>
-                    <Card.Title>{game.game?.name}</Card.Title>
                     <Card.Text>
                       {game.game?.summary || 'No Summary Found'}
                     </Card.Text>
                   </Card.Body>
+                  <Card.Footer>
+                    Release Date: {new Date(game.date * 1000).toDateString()}
+                  </Card.Footer>
                 </Card>
               </li>
             ))}
