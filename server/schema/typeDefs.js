@@ -6,15 +6,17 @@ const typeDefs = gql`
     username: String!
   }
 
-  type Game {
-    gameData: [GameData]
-    coverData: [CoverData]
+  type UpcomingData {
+    id: ID
+    date: Int
+    region: Int
+    game: GameData
   }
 
   type GameData {
     id: Int
     name: String
-    cover: Int
+    cover: CoverData
     platforms: [Int]
     release_dates: [Int]
     summary: String
@@ -28,7 +30,8 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    api: Game
+    upcoming(date: Int): [UpcomingData]
+    game(gameID: ID): GameData
   }
   type Mutation {
     temp: User
