@@ -19,3 +19,8 @@
 .card-body {
   overflow: auto;
 }
+
+.card-title {
+  text-align: center;
+  color: green;
+}

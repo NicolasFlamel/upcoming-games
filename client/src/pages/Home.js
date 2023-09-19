@@ -16,6 +16,11 @@ const Home = () => {
 
   console.log(upcoming);
 
+  const handleImgUrl = (url) => {
+    if (!url) return 'https://placehold.co/400?text=No+Image+Found';
+    return url.replace('/t_thumb', '/t_cover_big');
+  };
+
   return (
     <section>
       <h1>Welcome!</h1>
@@ -33,17 +38,17 @@ const Home = () => {
                 >
                   <Card.Img
                     variant="top"
-                    src={
-                      game.game?.cover?.url ||
-                      'https://placehold.co/400?text=No+Image+Found'
-                    }
+                    src={handleImgUrl(game.game?.cover?.url)}
                   />
+                  <Card.Title>{game.game?.name}</Card.Title>
                   <Card.Body>
-                    <Card.Title>{game.game?.name}</Card.Title>
                     <Card.Text>
                       {game.game?.summary || 'No Summary Found'}
                     </Card.Text>
                   </Card.Body>
+                  <Card.Footer>
+                    Release Date: {new Date(game.date * 1000).toDateString()}
+                  </Card.Footer>
                 </Card>
               </li>
             ))}
