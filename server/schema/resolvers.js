@@ -17,12 +17,14 @@ const resolvers = {
         Authorization: 'Bearer ' + process.env.IGBD_AUTH,
       };
 
+      if (!date) date = Math.floor(Date.now() / 1000);
+
       try {
         // finds up coming games
         const upcomingResponse = await fetch(upcomingURL, {
           method: 'POST',
           headers,
-          body: 'fields id,date,region,game; where date > 1688774133 & region = (2,8); sort date asc; limit 500;',
+          body: `fields id,date,region,game,platform; where date > ${date} & region = (2,8); sort date asc; limit 500;`,
         });
         upcomingData = await upcomingResponse.json();
       } catch (error) {
